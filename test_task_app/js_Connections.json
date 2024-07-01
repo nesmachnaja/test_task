@@ -1,0 +1,11 @@
+{
+  "connections": [
+    {
+      "name": "test_task",
+      "parameters": {
+        "connectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=test_task;Integrated Security=True;User ID=tech;Password=7ujmvfr49ol.;Connection Timeout=3600",
+        "providerName": "System.Data.SqlClient"
+      }
+    }
+  ]
+}

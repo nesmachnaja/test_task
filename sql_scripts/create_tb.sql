@@ -1,3 +1,6 @@
+
+use test_task
+
 drop table if exists tb_Employees
 drop table if exists tb_Positions
 drop table if exists tb_Departments

@@ -17,6 +17,20 @@ namespace test_task_app.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetEmployeeRoles()
+        {
+            cl_Tasks task = new cl_Tasks();
+            string query = "select * from test_task.dbo.tb_Employee_roles";
+            var employees = task.GetData(query);
+
+            return Json(JsonConvert.SerializeObject(employees, Formatting.None,
+                        new JsonSerializerSettings()
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        }));
+        }
+
+        [HttpGet]
         public IActionResult GetEmployees()
         {
             cl_Tasks task = new cl_Tasks();

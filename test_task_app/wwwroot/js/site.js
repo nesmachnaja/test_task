@@ -3,6 +3,7 @@ function GetData(event) {
     GetEmployees();
     GetDepartments();
     GetRoles();
+    GetEmployeeRoles();
 }
 
 function GetEmployees() {
@@ -155,6 +156,49 @@ function PostRole(event) {
         },
         error: function (error) {
             console.error(error);
+        }
+    });
+}
+
+function GetEmployeeRoles() {
+
+    $.ajax({
+        url: "/Index/GetEmployeeRoles",
+        type: "GET",
+        dataType: "json",
+        success: function (response) {
+            var employeeRoles = JSON.parse(response);
+            response = null;
+
+            var table = document.createElement("table");
+            table.id = "employeeRoles";
+            //select_employees.onchange = FixRole;
+
+            for (var employeeRole of employeeRoles) {
+                var tr = document.createElement("tr");
+                //option.value = employee.id;
+                //option.innerHTML = employee.full_name;
+                //select_employees.appendChild(option);
+                var td = document.createElement("td");
+                td.innerHTML = employeeRole.employee_id;
+                var td1 = document.createElement("td");
+                td1.innerHTML = employeeRole.department_id;
+                var td2 = document.createElement("td");
+                td2.innerHTML = employeeRole.role_id;
+
+                tr.appendChild(td);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+
+                table.appendChild(tr);
+            }
+
+            var div = document.getElementsByClassName("inline")[0];
+
+            div.appendChild(table);
+
+        },
+        error: function (xhr, status, error) {
         }
     });
 }
